@@ -30,8 +30,7 @@ class Passenger
   end
 
   # return passengers who travelled over 100 miles in total
-  def premium_members
-    # Ride.all.map { |ride| ride.passenger if self.total_distance > 100 }
+  def self.premium_members
     self.all.select { |passenger| passenger.total_distance > 100 }
   end
 

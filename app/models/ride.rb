@@ -15,7 +15,7 @@ class Ride
     @@all
   end
 
-  def average_distance
+  def self.average_distance
     total = 0
     self.all.each { |ride| total += ride.distance }
 

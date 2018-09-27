@@ -23,10 +23,15 @@ class Driver
     self.rides.map { |ride| ride.passenger }.uniq
   end
 
-  # all drivers that drove over the mileage cap
-  def mileage_cap(distance)
-    eligible_rides = Ride.all.select { |r| r.distance > distance }
-    eligible_rides.map { |r| r.driver }.uniq
+  # calculates the total distance that a specific driver made in total
+  def total_distance
+    total = 0
+    self.rides.each do { |ride| total += ride.distance }
+    total
+  end
+
+  def self.mileage_cap(distance)
+    self.all.select { |driver| driver.total_distance > distance }
   end
 
 end
